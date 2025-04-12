@@ -1,0 +1,25 @@
+[
+    {
+      "id": 1,
+      "name": "Mojito",
+      "image": "/images/mojito.jpg",
+      "ingredients": [
+        { "name": "Rhum blanc", "quantity": "4cl" },
+        { "name": "Menthe", "quantity": "10 feuilles" },
+        { "name": "Sucre", "quantity": "2 c.à.c" },
+        { "name": "Citron vert", "quantity": "1/2" },
+        { "name": "Eau gazeuse", "quantity": "compléter" }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Tequila Sunrise",
+      "image": "/images/tequila_sunrise.jpg",
+      "ingredients": [
+        { "name": "Tequila", "quantity": "4cl" },
+        { "name": "Jus d'orange", "quantity": "8cl" },
+        { "name": "Grenadine", "quantity": "1cl" }
+      ]
+    }
+  ]
+  
