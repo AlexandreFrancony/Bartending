@@ -1,56 +1,111 @@
-import React, { useEffect, useState } from 'react';
-import CocktailCard from '../components/CocktailCard';
+import { useEffect, useState } from "react";
+import CocktailCard from "../components/CocktailCard";
+import PageWrapper from "../components/PageWrapper";
+import UserDisplay from "../components/UserDisplay";
+import CocktailDrawer from "../components/CocktailDrawer";
+import toast from "react-hot-toast";
 
-export default function Home({ onOrder }) {
+export default function Home() {
   const [cocktails, setCocktails] = useState([]);
+  const [username, setUsername] = useState("");
   const [selectedCocktail, setSelectedCocktail] = useState(null);
+  const apiUrl = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
-    fetch('http://localhost:3001/cocktails')
-      .then(res => res.json())
-      .then(data => setCocktails(data))
-      .catch(err => console.error('Erreur fetch cocktails:', err));
+    const fetchCocktails = async () => {
+      try {
+        const [cocktailRes, ingRes, hiddenRes] = await Promise.all([
+          fetch(`${apiUrl}/cocktails`),
+          fetch(`${apiUrl}/admin/ingredients`),
+          fetch(`${apiUrl}/admin/hidden`),
+        ]);
+
+        const cocktails = await cocktailRes.json();
+        const availableIngredients = await ingRes.json();
+        const hiddenCocktails = await hiddenRes.json();
+
+        const filtered = cocktails.filter((cocktail) => {
+          const isVisible = !hiddenCocktails.includes(cocktail.id);
+          const hasAllIngredients = cocktail.ingredients.every((ing) =>
+            availableIngredients.includes(ing.name)
+          );
+          return isVisible && hasAllIngredients;
+        });
+
+        setCocktails(filtered);
+      } catch (err) {
+        console.error("Erreur lors du fetch des données :", err);
+      }
+    };
+
+    fetchCocktails();
   }, []);
 
+  const handleCocktailClick = (cocktail) => {
+    setSelectedCocktail(cocktail);
+  };
+
+  const handleOrder = async (cocktail) => {
+    const apiUrl = import.meta.env.VITE_API_URL;
+  
+    try {
+      const res = await fetch(`${apiUrl}/order`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          customerName: username,
+          cocktailId: cocktail.id,
+        }),
+      });
+  
+      if (res.ok) {
+        toast.success(`🍹 ${cocktail.name} commandé avec succès !`);
+        setSelectedCocktail(null);
+      } else {
+        toast.error("Erreur lors de la commande.");
+      }
+    } catch (err) {
+      console.error("Erreur commande :", err);
+      toast.error("Impossible de contacter le serveur.");
+    }
+  };
+  
+  
+
   return (
-    <div className="p-4">
-      <h1 className="text-2xl font-bold mb-4 text-center">Menu des Cocktails</h1>
-      <div className="grid grid-cols-2 gap-4">
-        {cocktails.map(cocktail => (
-          <CocktailCard
-            key={cocktail.id}
-            cocktail={cocktail}
-            onSelect={setSelectedCocktail}
-          />
-        ))}
-      </div>
-      {selectedCocktail && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-          <div className="bg-white p-6 rounded-2xl w-80">
-            <h2 className="text-xl font-bold mb-2">{selectedCocktail.name}</h2>
-            <ul className="mb-4">
-              {selectedCocktail.ingredients.map((item, idx) => (
-                <li key={idx}>• {item.quantity} {item.name}</li>
-              ))}
-            </ul>
-            <button
-              onClick={() => {
-                onOrder(selectedCocktail);
-                setSelectedCocktail(null);
-              }}
-              className="bg-green-500 text-white px-4 py-2 rounded-xl w-full mb-2"
-            >
-              Commander
-            </button>
-            <button
-              onClick={() => setSelectedCocktail(null)}
-              className="text-red-500 w-full"
-            >
-              Annuler
-            </button>
-          </div>
+    <PageWrapper>
+      {/* Header */}
+      <header className="fixed top-0 left-0 right-0 z-50 bg-gray-900 text-white px-4 pt-[calc(env(safe-area-inset-top)+0.5rem)] pb-3 shadow-md w-full">
+        <UserDisplay onNameChange={setUsername} />
+      </header>
+
+      {/* Contenu */}
+      <div className="pt-20 pb-20 px-4">
+
+        {/* Grille des cocktails */}
+        <div className="grid grid-cols-2 gap-4 sm:gap-6">
+          {cocktails.map((cocktail) => (
+            <CocktailCard
+              key={cocktail.id}
+              cocktail={cocktail}
+              onSelect={handleCocktailClick}
+            />
+          ))}
         </div>
-      )}
-    </div>
+
+          {cocktails.length === 0 && (
+            <p className="text-center text-gray-600 w-full mt-6">
+              Aucun cocktail disponible pour le moment 🥲
+            </p>
+          )}
+        </div>
+
+      {/* Drawer détails cocktail */}
+      <CocktailDrawer
+        cocktail={selectedCocktail}
+        onClose={() => setSelectedCocktail(null)}
+        onOrder={handleOrder}
+      />
+    </PageWrapper>
   );
 }
