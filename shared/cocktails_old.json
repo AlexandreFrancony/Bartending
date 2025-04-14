@@ -1,0 +1,25 @@
+[
+    {
+      "id": 1,
+      "name": "Mojito",
+      "image": "/images/mojito.jpg",
+      "ingredients": [
+        { "name": "Rhum blanc", "quantity": "4cl", "category": "Alcool" },
+        { "name": "Menthe", "quantity": "6 feuilles", "category": "Garniture" },
+        { "name": "Sucre", "quantity": "2 c.à.c", "category": "Sucrant" },
+        { "name": "Citron vert", "quantity": "1/2", "category": "Fruits" },
+        { "name": "Eau gazeuse", "quantity": "compléter", "category": "Diluant" }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Tequila Sunrise",
+      "image": "/images/tequila_sunrise.jpg",
+      "ingredients": [
+        { "name": "Tequila", "quantity": "4cl", "category": "Alcool" },
+        { "name": "Jus d'orange", "quantity": "8cl", "category": "Diluant" },
+        { "name": "Grenadine", "quantity": "1cl", "category": "Sucrant" }
+      ]
+    }
+  ]
+  

@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import cocktails from "../shared/cocktails.json" assert { type: "json" };
+import os from "os";
 
 const app = express();
 const PORT = 3001;
@@ -81,7 +82,41 @@ app.post("/admin/hidden", (req, res) => {
   res.json({ success: true });
 });
 
+app.delete("/orders/:id", (req, res) => {
+  const { id } = req.params;
+  const orderId = parseInt(id);
+
+  const index = orders.findIndex((order) => order.id === orderId);
+  if (index === -1) {
+    return res.status(404).json({ error: "Commande non trouvée" });
+  }
+
+  orders.splice(index, 1);
+  res.json({ success: true });
+});
+
+app.delete("/orders", (req, res) => {
+  orders.length = 0; // vide le tableau
+  res.json({ success: true });
+});
+
+function getLocalExternalIp() {
+  const interfaces = os.networkInterfaces();
+
+  for (const name of Object.keys(interfaces)) {
+    for (const iface of interfaces[name]) {
+      if (iface.family === "IPv4" && !iface.internal) {
+        return iface.address;
+      }
+    }
+  }
+
+  return "localhost"; // fallback
+}
+
+const address = getLocalExternalIp();
+
 // ✅ Start server
 app.listen(PORT, "0.0.0.0", () => {
-  console.log(`✅ Bartending API listening on http://0.0.0.0:${PORT}`);
+  console.log(`✅ Bartending API listening on http://${address}:${PORT}`);
 });

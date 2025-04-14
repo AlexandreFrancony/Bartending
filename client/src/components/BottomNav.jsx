@@ -3,7 +3,6 @@ import { Link, useLocation } from "react-router-dom";
 export default function BottomNav({ username, isBloster }) {
   const location = useLocation();
 
-  // ❌ Ne pas afficher si ce n’est pas Bloster
   if (!isBloster) return null;
 
   const isActive = (path) => location.pathname === path;
@@ -18,6 +17,16 @@ export default function BottomNav({ username, isBloster }) {
       >
         <span className="text-xl">🍸</span>
         Accueil
+      </Link>
+
+      <Link
+        to="/orders"
+        className={`flex flex-col items-center text-sm ${
+          isActive("/orders") ? "text-yellow-400" : "text-white"
+        }`}
+      >
+        <span className="text-xl">📋</span>
+        Commandes
       </Link>
 
       <Link

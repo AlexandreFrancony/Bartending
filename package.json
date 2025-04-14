@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "client": "npm --prefix client run dev -- --host",
-    "server": "npm --prefix server run dev"
+    "server": "npm --prefix server run dev",
+    "install:all": "npm --prefix client install && npm --prefix server install"    
   },
   "dependencies": {
     "cors": "^2.8.5",

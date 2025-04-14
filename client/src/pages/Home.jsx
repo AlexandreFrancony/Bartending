@@ -5,10 +5,11 @@ import UserDisplay from "../components/UserDisplay";
 import CocktailDrawer from "../components/CocktailDrawer";
 import toast from "react-hot-toast";
 
-export default function Home() {
+export default function Home({ username, setUsername }) {
   const [cocktails, setCocktails] = useState([]);
-  const [username, setUsername] = useState("");
   const [selectedCocktail, setSelectedCocktail] = useState(null);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [filterType, setFilterType] = useState("all"); // 'all', 'alcohol', 'noalcohol'
   const apiUrl = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
@@ -46,8 +47,6 @@ export default function Home() {
   };
 
   const handleOrder = async (cocktail) => {
-    const apiUrl = import.meta.env.VITE_API_URL;
-  
     try {
       const res = await fetch(`${apiUrl}/order`, {
         method: "POST",
@@ -57,7 +56,7 @@ export default function Home() {
           cocktailId: cocktail.id,
         }),
       });
-  
+
       if (res.ok) {
         toast.success(`🍹 ${cocktail.name} commandé avec succès !`);
         setSelectedCocktail(null);
@@ -69,8 +68,19 @@ export default function Home() {
       toast.error("Impossible de contacter le serveur.");
     }
   };
-  
-  
+
+  const hasAlcohol = (cocktail) =>
+    cocktail.ingredients.some((ing) => ing.category === "Alcool");  
+
+  const filteredCocktails = cocktails
+    .filter((cocktail) =>
+      cocktail.name.toLowerCase().includes(searchTerm.toLowerCase())
+    )
+    .filter((cocktail) => {
+      if (filterType === "all") return true;
+      if (filterType === "alcohol") return hasAlcohol(cocktail);
+      if (filterType === "noalcohol") return !hasAlcohol(cocktail);
+    });
 
   return (
     <PageWrapper>
@@ -80,11 +90,47 @@ export default function Home() {
       </header>
 
       {/* Contenu */}
-      <div className="pt-20 pb-20 px-4">
+      <div className="pt-[calc(env(safe-area-inset-top)+5.3rem)] px-4">
+        {/* 🔍 Recherche */}
+        <input
+          type="text"
+          placeholder="🔎 Rechercher un cocktail..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className="w-full mb-4 p-2 border rounded text-sm shadow-sm"
+        />
 
-        {/* Grille des cocktails */}
+        {/* 🎯 Filtrage par type */}
+        <div className="flex justify-center mb-4 gap-2">
+          <button
+            className={`px-3 py-1 rounded-full text-sm font-semibold ${
+              filterType === "alcohol" ? "bg-purple-600 text-white" : "bg-gray-200 text-gray-700"
+            }`}
+            onClick={() => setFilterType("alcohol")}
+          >
+            🥃 Alcoolisés
+          </button>
+          <button
+            className={`px-3 py-1 rounded-full text-sm font-semibold ${
+              filterType === "all" ? "bg-purple-600 text-white" : "bg-gray-200 text-gray-700"
+            }`}
+            onClick={() => setFilterType("all")}
+          >
+            🍹 Tous
+          </button>
+          <button
+            className={`px-3 py-1 rounded-full text-sm font-semibold ${
+              filterType === "noalcohol" ? "bg-purple-600 text-white" : "bg-gray-200 text-gray-700"
+            }`}
+            onClick={() => setFilterType("noalcohol")}
+          >
+            🧃 Sans Alcool
+          </button>
+        </div>
+
+        {/* 🧊 Grille des cocktails */}
         <div className="grid grid-cols-2 gap-4 sm:gap-6">
-          {cocktails.map((cocktail) => (
+          {filteredCocktails.map((cocktail) => (
             <CocktailCard
               key={cocktail.id}
               cocktail={cocktail}
@@ -93,12 +139,12 @@ export default function Home() {
           ))}
         </div>
 
-          {cocktails.length === 0 && (
-            <p className="text-center text-gray-600 w-full mt-6">
-              Aucun cocktail disponible pour le moment 🥲
-            </p>
-          )}
-        </div>
+        {filteredCocktails.length === 0 && (
+          <p className="text-center text-gray-600 w-full mt-6">
+            Aucun cocktail trouvé 🥲
+          </p>
+        )}
+      </div>
 
       {/* Drawer détails cocktail */}
       <CocktailDrawer
