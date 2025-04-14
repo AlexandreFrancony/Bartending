@@ -1,25 +1,371 @@
 [
-    {
-      "id": 1,
-      "name": "Mojito",
-      "image": "/images/mojito.jpg",
-      "ingredients": [
-        { "name": "Rhum blanc", "quantity": "4cl" },
-        { "name": "Menthe", "quantity": "10 feuilles" },
-        { "name": "Sucre", "quantity": "2 c.à.c" },
-        { "name": "Citron vert", "quantity": "1/2" },
-        { "name": "Eau gazeuse", "quantity": "compléter" }
-      ]
-    },
-    {
-      "id": 2,
-      "name": "Tequila Sunrise",
-      "image": "/images/tequila_sunrise.jpg",
-      "ingredients": [
-        { "name": "Tequila", "quantity": "4cl" },
-        { "name": "Jus d'orange", "quantity": "8cl" },
-        { "name": "Grenadine", "quantity": "1cl" }
-      ]
-    }
-  ]
-  
+  {
+    "id": "ceci-nest-pas-un-ginto",
+    "name": "Ceci n'est pas un GinTo",
+    "image": "ceci-nest-pas-un-ginto.jpg",
+    "ingredients": [
+      {
+        "name": "JNPR n°1",
+        "quantity": "3 cl",
+        "category": "JNPR"
+      },
+      {
+        "name": "Tonic",
+        "quantity": "6 cl",
+        "category": "Diluant"
+      },
+      {
+        "name": "Zeste de citron",
+        "quantity": "1",
+        "category": "Garniture"
+      }
+    ]
+  },
+  {
+    "id": "ceci-nest-pas-un-spritz",
+    "name": "Ceci n'est pas un Spritz",
+    "image": "ceci-nest-pas-un-spritz.jpg",
+    "ingredients": [
+      {
+        "name": "BTTR n°1",
+        "quantity": "3 cl",
+        "category": "JNPR"
+      },
+      {
+        "name": "Eau gazeuse",
+        "quantity": "6 cl",
+        "category": "Diluant"
+      },
+      {
+        "name": "Rondelle d'orange",
+        "quantity": "1",
+        "category": "Garniture"
+      }
+    ]
+  },
+  {
+    "id": "ceci-nest-pas-un-mule",
+    "name": "Ceci n'est pas un Mule",
+    "image": "ceci-nest-pas-un-mule.jpg",
+    "ingredients": [
+      {
+        "name": "JNPR n°2",
+        "quantity": "4 cl",
+        "category": "JNPR"
+      },
+      {
+        "name": "Ginger Beer",
+        "quantity": "10 cl",
+        "category": "Diluant"
+      },
+      {
+        "name": "Jus de citron vert",
+        "quantity": "1 cl",
+        "category": "Fruits"
+      }
+    ]
+  },
+  {
+    "id": "ceci-nest-pas-un-mojito",
+    "name": "Ceci n'est pas un Mojito",
+    "image": "ceci-nest-pas-un-mojito.jpg",
+    "ingredients": [
+      {
+        "name": "JNPR n°2",
+        "quantity": "4 cl",
+        "category": "JNPR"
+      },
+      {
+        "name": "Menthe fraîche",
+        "quantity": "8 feuilles",
+        "category": "Garniture"
+      },
+      {
+        "name": "Sirop de sucre",
+        "quantity": "2 cl",
+        "category": "Sucrant"
+      },
+      {
+        "name": "Jus de citron vert",
+        "quantity": "2 cl",
+        "category": "Fruits"
+      },
+      {
+        "name": "Eau gazeuse",
+        "quantity": "6 cl",
+        "category": "Diluant"
+      }
+    ]
+  },
+  {
+    "id": "ceci-nest-pas-un-cosmopolitan",
+    "name": "Ceci n'est pas un Cosmopolitan",
+    "image": "ceci-nest-pas-un-cosmopolitan.jpg",
+    "ingredients": [
+      {
+        "name": "JNPR n°1",
+        "quantity": "4 cl",
+        "category": "JNPR"
+      },
+      {
+        "name": "Jus de cranberry",
+        "quantity": "2 cl",
+        "category": "Fruits"
+      },
+      {
+        "name": "Jus de citron vert",
+        "quantity": "1 cl",
+        "category": "Fruits"
+      },
+      {
+        "name": "Sirop de sucre",
+        "quantity": "1 cl",
+        "category": "Sucrant"
+      }
+    ]
+  },
+  {
+    "id": "ceci-nest-pas-une-margarita",
+    "name": "Ceci n'est pas une Margarita",
+    "image": "ceci-nest-pas-une-margarita.jpg",
+    "ingredients": [
+      {
+        "name": "JNPR n°1",
+        "quantity": "4 cl",
+        "category": "JNPR"
+      },
+      {
+        "name": "Jus de citron vert",
+        "quantity": "2 cl",
+        "category": "Fruits"
+      },
+      {
+        "name": "Sirop d'agave",
+        "quantity": "1 cl",
+        "category": "Sucrant"
+      }
+    ]
+  },
+  {
+    "id": "ceci-nest-pas-un-negroni",
+    "name": "Ceci n'est pas un Negroni",
+    "image": "ceci-nest-pas-un-negroni.jpg",
+    "ingredients": [
+      {
+        "name": "BTTR n°1",
+        "quantity": "3 cl",
+        "category": "JNPR"
+      },
+      {
+        "name": "VRMH n°1",
+        "quantity": "3 cl",
+        "category": "JNPR"
+      },
+      {
+        "name": "JNPR n°1",
+        "quantity": "3 cl",
+        "category": "JNPR"
+      }
+    ]
+  },
+  {
+    "id": "ceci-nest-pas-un-sour",
+    "name": "Ceci n'est pas un Sour",
+    "image": "ceci-nest-pas-un-sour.jpg",
+    "ingredients": [
+      {
+        "name": "JNPR n°1",
+        "quantity": "4 cl",
+        "category": "JNPR"
+      },
+      {
+        "name": "Jus de citron",
+        "quantity": "2 cl",
+        "category": "Fruits"
+      },
+      {
+        "name": "Sirop de sucre",
+        "quantity": "2 cl",
+        "category": "Sucrant"
+      },
+      {
+        "name": "Blanc d'œuf",
+        "quantity": "1",
+        "category": "Garniture"
+      }
+    ]
+  },
+  {
+    "id": "ceci-nest-pas-un-basil-smash",
+    "name": "Ceci n'est pas un Basil Smash",
+    "image": "ceci-nest-pas-un-basil-smash.jpg",
+    "ingredients": [
+      {
+        "name": "JNPR n°2",
+        "quantity": "4 cl",
+        "category": "JNPR"
+      },
+      {
+        "name": "Jus de citron",
+        "quantity": "2 cl",
+        "category": "Fruits"
+      },
+      {
+        "name": "Sirop de sucre",
+        "quantity": "2 cl",
+        "category": "Sucrant"
+      },
+      {
+        "name": "Basilic frais",
+        "quantity": "6 feuilles",
+        "category": "Garniture"
+      }
+    ]
+  },
+  {
+    "id": "ceci-nest-pas-un-paloma",
+    "name": "Ceci n'est pas un Paloma",
+    "image": "ceci-nest-pas-un-paloma.jpg",
+    "ingredients": [
+      {
+        "name": "JNPR n°3",
+        "quantity": "4 cl",
+        "category": "JNPR"
+      },
+      {
+        "name": "Jus de pamplemousse",
+        "quantity": "6 cl",
+        "category": "Fruits"
+      },
+      {
+        "name": "Sirop d'agave",
+        "quantity": "1 cl",
+        "category": "Sucrant"
+      },
+      {
+        "name": "Eau gazeuse",
+        "quantity": "4 cl",
+        "category": "Diluant"
+      }
+    ]
+  },
+  {
+    "id": "bellini",
+    "name": "Bellini",
+    "image": "bellini.jpg",
+    "ingredients": [
+      { "name": "Purée de pêches", "quantity": "3 cl", "category": "Fruits" },
+      { "name": "Prosecco", "quantity": "10 cl", "category": "Alcool" }
+    ]
+  },
+  {
+    "id": "sex-on-the-beach",
+    "name": "Sex on the Beach",
+    "image": "sex-on-the-beach.jpg",
+    "ingredients": [
+      { "name": "Vodka", "quantity": "4 cl", "category": "Alcool" },
+      { "name": "Crème de pêche", "quantity": "1 cl", "category": "Fruits" },
+      { "name": "Liqueur de Chambord", "quantity": "1 cl", "category": "Alcool" },
+      { "name": "Jus d’orange", "quantity": "5 cl", "category": "Fruits" },
+      { "name": "Jus de cranberry", "quantity": "5 cl", "category": "Fruits" }
+    ]
+  },
+  {
+    "id": "spritz",
+    "name": "Spritz",
+    "image": "spritz.jpg",
+    "ingredients": [
+      { "name": "Apérol", "quantity": "2 cl", "category": "Alcool" },
+      { "name": "Prosecco", "quantity": "3 cl", "category": "Alcool" },
+      { "name": "Eau pétillante", "quantity": "1 cl", "category": "Diluant" }
+    ]
+  },
+  {
+    "id": "mojito",
+    "name": "Mojito",
+    "image": "mojito.jpg",
+    "ingredients": [
+      { "name": "Feuilles de menthe", "quantity": "8 feuilles", "category": "Garniture" },
+      { "name": "Rhum blanc", "quantity": "5 cl", "category": "Alcool" },
+      { "name": "Sirop de sucre", "quantity": "2.5 cl", "category": "Sucrant" },
+      { "name": "Jus de citron vert", "quantity": "2.5 cl", "category": "Fruits" },
+      { "name": "Eau pétillante", "quantity": "2.5 cl", "category": "Diluant" }
+    ]
+  },
+  {
+    "id": "margarita",
+    "name": "Margarita",
+    "image": "margarita.jpg",
+    "ingredients": [
+      { "name": "Tequila", "quantity": "4 cl", "category": "Alcool" },
+      { "name": "Triple sec", "quantity": "2 cl", "category": "Alcool" },
+      { "name": "Jus de citron vert", "quantity": "2 cl", "category": "Fruits" }
+    ]
+  },
+  {
+    "id": "bloody-mary",
+    "name": "Bloody Mary",
+    "image": "bloody-mary.jpg",
+    "ingredients": [
+      { "name": "Vodka", "quantity": "5 cl", "category": "Alcool" },
+      { "name": "Jus de tomate", "quantity": "10 cl", "category": "Fruits" },
+      { "name": "Jus de citron", "quantity": "1 cl", "category": "Fruits" },
+      { "name": "Worcestershire sauce", "quantity": "3 traits", "category": "Garniture" },
+      { "name": "Tabasco", "quantity": "1 trait", "category": "Garniture" },
+      { "name": "Sel de céleri", "quantity": "1 pincée", "category": "Garniture" },
+      { "name": "Poivre", "quantity": "1 pincée", "category": "Garniture" }
+    ]
+  },
+  {
+    "id": "moscow-mule",
+    "name": "Moscow Mule",
+    "image": "moscow-mule.jpg",
+    "ingredients": [
+      { "name": "Vodka", "quantity": "4 cl", "category": "Alcool" },
+      { "name": "Jus de citron vert", "quantity": "0.5 citron", "category": "Fruits" },
+      { "name": "Ginger Beer", "quantity": "Complément", "category": "Diluant" }
+    ]
+  },
+  {
+    "id": "bora-bora",
+    "name": "Bora Bora",
+    "image": "bora-bora.jpg",
+    "ingredients": [
+      { "name": "Jus d’ananas", "quantity": "10 cl", "category": "Fruits" },
+      { "name": "Jus de fruit de la passion", "quantity": "6 cl", "category": "Fruits" },
+      { "name": "Jus de citron", "quantity": "1 cl", "category": "Fruits" },
+      { "name": "Sirop de grenadine", "quantity": "2 cl", "category": "Sucrant" },
+      { "name": "Tranche d’ananas", "quantity": "1", "category": "Garniture" },
+      { "name": "Tranche d’orange", "quantity": "1", "category": "Garniture" }
+    ]
+  },
+  {
+    "id": "gin-tonic",
+    "name": "Gin Tonic",
+    "image": "gin-tonic.jpg",
+    "ingredients": [
+      { "name": "Gin", "quantity": "3 cl", "category": "Alcool" },
+      { "name": "Tonic", "quantity": "Complément", "category": "Diluant" }
+    ]
+  },
+  {
+    "id": "old-fashioned",
+    "name": "Old Fashioned",
+    "image": "old-fashioned.jpg",
+    "ingredients": [
+      { "name": "Bourbon", "quantity": "5 cl", "category": "Alcool" },
+      { "name": "Eau pétillante", "quantity": "0.5 cl", "category": "Diluant" },
+      { "name": "Angostura bitters", "quantity": "2 traits", "category": "Garniture" }
+    ]
+  },
+  {
+    "id": "negroni",
+    "name": "Negroni",
+    "image": "negroni.jpg",
+    "ingredients": [
+      { "name": "Gin", "quantity": "30 ml", "category": "Alcool" },
+      { "name": "Vermouth rouge", "quantity": "30 ml", "category": "Alcool" },
+      { "name": "Campari", "quantity": "30 ml", "category": "Alcool" }
+    ]
+  }
+]

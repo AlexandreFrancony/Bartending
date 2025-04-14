@@ -5,6 +5,7 @@ export default function Admin() {
   const [cocktails, setCocktails] = useState([]);
   const [availableIngredients, setAvailableIngredients] = useState([]);
   const [hidden, setHidden] = useState([]);
+  const [expandedCategories, setExpandedCategories] = useState({});
   const apiUrl = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
@@ -16,9 +17,23 @@ export default function Admin() {
           fetch(`${apiUrl}/admin/hidden`),
         ]);
 
-        setCocktails(await cocktailRes.json());
-        setAvailableIngredients(await ingRes.json());
-        setHidden(await hiddenRes.json());
+        const cocktailsData = await cocktailRes.json();
+        const ingredients = await ingRes.json();
+        const hiddenData = await hiddenRes.json();
+
+        setCocktails(cocktailsData);
+        setAvailableIngredients(ingredients);
+        setHidden(hiddenData);
+
+        const initial = {};
+        cocktailsData.forEach((cocktail) => {
+          cocktail.ingredients.forEach((ing) => {
+            if (!initial[ing.category]) {
+              initial[ing.category] = false;
+            }
+          });
+        });
+        setExpandedCategories(initial);
       } catch (err) {
         console.error("Erreur fetch données admin:", err);
       }
@@ -39,8 +54,6 @@ export default function Admin() {
         setHidden((prev) =>
           isHidden ? prev.filter((id) => id !== cocktailId) : [...prev, cocktailId]
         );
-      } else {
-        console.error("Erreur lors du POST /admin/hidden");
       }
     } catch (err) {
       console.error("Erreur toggle visibility:", err);
@@ -48,12 +61,9 @@ export default function Admin() {
   };
 
   const toggleIngredient = async (ingredient) => {
-    let updated = [...availableIngredients];
-    if (availableIngredients.includes(ingredient)) {
-      updated = updated.filter((i) => i !== ingredient);
-    } else {
-      updated.push(ingredient);
-    }
+    const updated = availableIngredients.includes(ingredient)
+      ? availableIngredients.filter((i) => i !== ingredient)
+      : [...availableIngredients, ingredient];
 
     setAvailableIngredients(updated);
 
@@ -68,40 +78,84 @@ export default function Admin() {
     }
   };
 
-  const allIngredients = Array.from(
-    new Set(cocktails.flatMap((c) => c.ingredients.map((i) => i.name)))
-  );
+  const toggleCategory = (category) => {
+    setExpandedCategories((prev) => ({
+      ...prev,
+      [category]: !prev[category],
+    }));
+  };
 
-  const isCocktailFeasible = (cocktail) => {
-    return cocktail.ingredients.every((ing) =>
+  const ingredientByCategory = {};
+  cocktails.forEach((cocktail) => {
+    cocktail.ingredients.forEach((ing) => {
+      if (!ingredientByCategory[ing.category]) {
+        ingredientByCategory[ing.category] = new Set();
+      }
+      ingredientByCategory[ing.category].add(ing.name);
+    });
+  });
+
+  const isCocktailFeasible = (cocktail) =>
+    cocktail.ingredients.every((ing) =>
       availableIngredients.includes(ing.name)
     );
-  };
 
   return (
     <PageWrapper>
-      <div className="p-6">
+      <div className="p-6 text-gray-900 dark:text-gray-100">
         <h1 className="text-3xl font-bold mb-6">👨‍🍳 Interface Admin</h1>
 
+        {/* Ingrédients par catégories */}
         <section className="mb-8">
-          <h2 className="text-xl font-semibold mb-2">Ingrédients disponibles</h2>
-          <div className="flex flex-wrap gap-4">
-            {allIngredients.map((ingredient) => (
-              <label key={ingredient} className="flex items-center gap-2">
-                <input
-                  type="checkbox"
-                  checked={availableIngredients.includes(ingredient)}
-                  onChange={() => toggleIngredient(ingredient)}
-                />
-                {ingredient}
-              </label>
-            ))}
+          <h2 className="text-xl font-semibold mb-4">Ingrédients disponibles</h2>
+
+          <div className="flex flex-col gap-3">
+            {Object.entries(ingredientByCategory).map(([category, ingredientsSet]) => {
+              const ingredients = Array.from(ingredientsSet);
+
+              return (
+                <div
+                  key={category}
+                  className="bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm"
+                >
+                  <button
+                    className="w-full text-left px-4 py-2 font-semibold text-purple-700 dark:text-purple-300 flex justify-between items-center"
+                    onClick={() => toggleCategory(category)}
+                  >
+                    <span>{category}</span>
+                    <span className="text-gray-500 dark:text-gray-400 text-sm">
+                      {expandedCategories[category] ? "▲" : "▼"}
+                    </span>
+                  </button>
+
+                  {expandedCategories[category] && (
+                    <div className="px-4 pb-4 pt-2 flex flex-wrap gap-3">
+                      {ingredients.map((ingredient) => (
+                        <label
+                          key={ingredient}
+                          className="flex items-center gap-2 text-sm text-gray-800 dark:text-gray-100"
+                        >
+                          <input
+                            type="checkbox"
+                            checked={availableIngredients.includes(ingredient)}
+                            onChange={() => toggleIngredient(ingredient)}
+                            className="accent-purple-600"
+                          />
+                          {ingredient}
+                        </label>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
           </div>
         </section>
 
+        {/* Cocktails */}
         <section>
           <h2 className="text-xl font-semibold mb-2">Cocktails</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-2 gap-4">
             {cocktails.map((cocktail) => {
               const isHidden = hidden.includes(cocktail.id);
               const isFeasible = isCocktailFeasible(cocktail);
@@ -109,11 +163,13 @@ export default function Admin() {
               return (
                 <div
                   key={cocktail.id}
-                  className="border rounded-xl p-4 shadow bg-white flex flex-col justify-between"
+                  className="bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-xl p-4 shadow-sm flex flex-col justify-between"
                 >
                   <div>
-                    <h3 className="text-lg font-bold text-black">{cocktail.name}</h3>
-                    <p className="text-sm text-gray-500 mb-1">
+                    <h3 className="text-lg font-bold text-gray-800 dark:text-white">
+                      {cocktail.name}
+                    </h3>
+                    <p className="text-sm text-gray-500 dark:text-gray-400 mb-1">
                       {isHidden ? "❌ Caché" : "✅ Visible"}
                     </p>
                     <p
@@ -127,9 +183,11 @@ export default function Admin() {
 
                   <button
                     onClick={() => toggleCocktailVisibility(cocktail.id, isHidden)}
-                    className={`mt-4 px-4 py-1 rounded text-white ${
-                      isHidden ? "bg-green-500" : "bg-red-500"
-                    }`}
+                    className={`mt-4 px-4 py-2 rounded text-white text-sm font-medium ${
+                      isHidden
+                        ? "bg-green-600 hover:bg-green-700"
+                        : "bg-red-600 hover:bg-red-700"
+                    } transition`}
                   >
                     {isHidden ? "Afficher" : "Cacher"}
                   </button>

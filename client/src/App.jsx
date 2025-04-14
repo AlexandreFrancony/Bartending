@@ -1,6 +1,7 @@
-import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Admin from "./pages/Admin";
+import Orders from "./pages/Orders";
 import NotAuthorized from "./pages/NotAuthorized";
 import PrivateRoute from "./components/PrivateRoute";
 import BottomNav from "./components/BottomNav";
@@ -26,12 +27,23 @@ export default function App() {
     <Router>
       <div className="pb-20">
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route
+            path="/"
+            element={<Home username={username} setUsername={setUsername} />}
+          />
           <Route
             path="/admin"
             element={
               <PrivateRoute>
                 <Admin />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/orders"
+            element={
+              <PrivateRoute>
+                <Orders />
               </PrivateRoute>
             }
           />
