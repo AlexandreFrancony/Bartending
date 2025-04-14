@@ -107,7 +107,31 @@ export default function Admin() {
 
         {/* Ingrédients par catégories */}
         <section className="mb-8">
-          <h2 className="text-xl font-semibold mb-4">Ingrédients disponibles</h2>
+          <div className="flex justify-between items-center mb-4">
+            <h2 className="text-xl font-semibold mb-4">Ingrédients disponibles</h2>
+
+            <div className="mb-4">
+              <button
+                onClick={() => {
+                  const allIngredients = Object.values(ingredientByCategory)
+                    .flatMap((set) => Array.from(set));
+                  setAvailableIngredients(allIngredients);
+                  try {
+                    fetch(`${apiUrl}/admin/ingredients`, {
+                      method: "POST",
+                      headers: { "Content-Type": "application/json" },
+                      body: JSON.stringify({ ingredients: allIngredients }),
+                    });
+                  } catch (err) {
+                    console.error("Erreur lors de la sélection de tous les ingrédients:", err);
+                  }
+                }}
+                className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded shadow"
+              >
+                Tous
+              </button>
+            </div>
+          </div>
 
           <div className="flex flex-col gap-3">
             {Object.entries(ingredientByCategory).map(([category, ingredientsSet]) => {
