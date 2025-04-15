@@ -130,14 +130,17 @@ export default function Home({ username, setUsername }) {
 
         {/* 🧊 Grille des cocktails */}
         <div className="grid grid-cols-2 gap-4 sm:gap-6">
-          {filteredCocktails.map((cocktail) => (
-            <CocktailCard
-              key={cocktail.id}
-              cocktail={cocktail}
-              onSelect={handleCocktailClick}
-            />
-          ))}
+          {[...filteredCocktails]
+            .sort((a, b) => a.name.localeCompare(b.name))
+            .map((cocktail) => (
+              <CocktailCard
+                key={cocktail.id}
+                cocktail={cocktail}
+                onSelect={handleCocktailClick}
+              />
+            ))}
         </div>
+
 
         {filteredCocktails.length === 0 && (
           <p className="text-center text-gray-600 w-full mt-6">

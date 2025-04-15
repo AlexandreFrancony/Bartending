@@ -180,7 +180,9 @@ export default function Admin() {
         <section>
           <h2 className="text-xl font-semibold mb-2">Cocktails</h2>
           <div className="grid grid-cols-2 sm:grid-cols-2 gap-4">
-            {cocktails.map((cocktail) => {
+          {[...cocktails]
+            .sort((a, b) => a.name.localeCompare(b.name))
+            .map((cocktail) => {
               const isHidden = hidden.includes(cocktail.id);
               const isFeasible = isCocktailFeasible(cocktail);
 

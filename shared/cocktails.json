@@ -32,7 +32,7 @@
         "category": "JNPR"
       },
       {
-        "name": "Eau gazeuse",
+        "name": "Eau pétillante",
         "quantity": "6 cl",
         "category": "Diluant"
       },
@@ -91,7 +91,7 @@
         "category": "Fruits"
       },
       {
-        "name": "Eau gazeuse",
+        "name": "Eau pétillante",
         "quantity": "6 cl",
         "category": "Diluant"
       }
@@ -243,7 +243,7 @@
         "category": "Sucrant"
       },
       {
-        "name": "Eau gazeuse",
+        "name": "Eau pétillante",
         "quantity": "4 cl",
         "category": "Diluant"
       }
@@ -321,8 +321,8 @@
     "name": "Moscow Mule",
     "image": "moscow-mule.jpg",
     "ingredients": [
-      { "name": "Vodka", "quantity": "4 cl", "category": "Alcool" },
-      { "name": "Jus de citron vert", "quantity": "0.5 citron", "category": "Fruits" },
+      { "name": "Vodka", "quantity": "6 cl", "category": "Alcool" },
+      { "name": "Jus de citron vert", "quantity": "1 cl", "category": "Fruits" },
       { "name": "Ginger Beer", "quantity": "Complément", "category": "Diluant" }
     ]
   },
@@ -366,6 +366,79 @@
       { "name": "Gin", "quantity": "30 ml", "category": "Alcool" },
       { "name": "Vermouth rouge", "quantity": "30 ml", "category": "Alcool" },
       { "name": "Campari", "quantity": "30 ml", "category": "Alcool" }
+    ]
+  },
+  {
+    "id": "pink-lady",
+    "name": "Pink Lady",
+    "image": "pink-lady.jpg",
+    "ingredients": [
+      { "name": "Gin", "quantity": "4 cl", "category": "Alcool" },
+      { "name": "Sirop de grenadine", "quantity": "1 cl", "category": "Sucrant" },
+      { "name": "Jus de citron", "quantity": "2 cl", "category": "Fruits" },
+      { "name": "Blanc d'œuf", "quantity": "1", "category": "Garniture" }
+    ]
+  },
+  {
+    "id": "bee's-knees",
+    "name": "Bee's knees",
+    "image": "bees-knees.jpg",
+    "ingredients": [
+      { "name": "Gin", "quantity": "5 cl", "category": "Alcool" },
+      { "name": "Jus de citron", "quantity": "2.5 cl", "category": "Fruits" },
+      { "name": "Miel", "quantity": "2.5 cl", "category": "Sucrant" }
+    ]
+  },
+  {
+    "id": "mitsubachi",
+    "name": "ミツバチ (Mistsubachi)",
+    "image": "mitsubachi.jpg",
+    "ingredients": [
+      { "name": "Gin", "quantity": "5cl", "category": "Alcool" },
+      { "name": "Yuzu honey", "quantity": "3 cl", "category": "Fruits" }
+    ]
+  },
+  {
+    "id": "piña-colada",
+    "name": "Piña Colada",
+    "image": "pina-colada.jpg",
+    "ingredients": [
+      { "name": "Rhum blanc", "quantity": "3 cl", "category": "Alcool" },
+      { "name": "Crème de coco", "quantity": "3 cl", "category": "Sucrant" },
+      { "name": "Jus d’ananas", "quantity": "9 cl", "category": "Fruits" },
+      { "name": "Crème fraîche épaisse", "quantity": "2 cl", "category": "Diluant" }
+    ]
+  },
+  {
+    "id": "cosmopolitain",
+    "name": "Cosmopolitain",
+    "image": "cosmopolitain.jpg",
+    "ingredients": [
+      { "name": "Vodka", "quantity": "4 cl", "category": "Alcool" },
+      { "name": "Triple sec", "quantity": "2 cl", "category": "Alcool" },
+      { "name": "Jus de cranberry", "quantity": "2 cl", "category": "Fruits" },
+      { "name": "Jus de citron vert", "quantity": "1 cl", "category": "Fruits" }
+    ]
+  },
+  {
+    "id": "blue-hawaiian",
+    "name": "Blue Hawaiian",
+    "image": "blue-hawaiian.jpg",
+    "ingredients": [
+      { "name": "Rhum blanc", "quantity": "4 cl", "category": "Alcool" },
+      { "name": "Lait de coco", "quantity": "4 cl", "category": "Sucrant" },
+      { "name": "Jus d’ananas", "quantity": "8 cl", "category": "Fruits" },
+      { "name": "Curacao bleu", "quantity": "2 cl", "category": "Alcool" }
+    ]
+  },
+  {
+    "id": "penicilline",
+    "name": "Penicilline",
+    "image": "penicilline.jpg",
+    "ingredients": [
+      { "name": "Whisky", "quantity": "5 cl", "category": "Alcool" },
+      { "name": "Jus de citron", "quantity": "2.5 cl", "category": "Fruits" },
+      { "name": "Miel", "quantity": "1.5 cl", "category": "Sucrant" }
     ]
   }
 ]
