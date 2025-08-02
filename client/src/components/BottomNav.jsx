@@ -8,11 +8,11 @@ export default function BottomNav({ username, isBloster }) {
   const isActive = (path) => location.pathname === path;
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 bg-gray-900 text-white flex justify-around items-center h-16 shadow-lg z-50">
+    <nav className="fixed bottom-0 left-0 right-0 bg-white dark:bg-gray-900 text-gray-900 dark:text-white flex justify-around items-center h-16 shadow-lg z-50 transition-colors duration-300">
       <Link
         to="/"
         className={`flex flex-col items-center text-sm ${
-          isActive("/") ? "text-yellow-400" : "text-white"
+          isActive("/") ? "text-yellow-500 dark:text-yellow-300" : ""
         }`}
       >
         <span className="text-xl">🍸</span>
@@ -22,7 +22,7 @@ export default function BottomNav({ username, isBloster }) {
       <Link
         to="/orders"
         className={`flex flex-col items-center text-sm ${
-          isActive("/orders") ? "text-yellow-400" : "text-white"
+          isActive("/orders") ? "text-yellow-500 dark:text-yellow-300" : ""
         }`}
       >
         <span className="text-xl">📋</span>
@@ -32,7 +32,7 @@ export default function BottomNav({ username, isBloster }) {
       <Link
         to="/admin"
         className={`flex flex-col items-center text-sm ${
-          isActive("/admin") ? "text-yellow-400" : "text-white"
+          isActive("/admin") ? "text-yellow-500 dark:text-yellow-300" : ""
         }`}
       >
         <span className="text-xl">🛠</span>

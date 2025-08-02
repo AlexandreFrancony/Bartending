@@ -13,8 +13,9 @@ app.use(express.json());
 const orders = [];
 
 let availableIngredients = [
-  "Rhum blanc", "Menthe", "Sucre", "Citron vert", "Eau gazeuse", // Mojito
-  "Tequila", "Jus d'orange", "Grenadine",                        // Tequila Sunrise
+  "Rhum blanc", "Menthe", "Sucre", "Citron vert", "Eau gazeuse",
+  "Tequila", "Jus d'orange", "Grenadine", "Vodka", "Gin", "Sirop de sucre",
+  "Jus de citron", "Jus de citron vert"
 ];
 
 let hiddenCocktails = [];

@@ -39,7 +39,7 @@ export default function UserDisplay({ onNameChange }) {
   };
 
   return (
-    <div className="flex items-center gap-3 px-4 py-2 w-full text-white">
+    <div className="flex items-center gap-3 px-4 py-2 w-full bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300">
       {editing ? (
         <div className="flex items-center gap-2">
           <input
@@ -57,12 +57,12 @@ export default function UserDisplay({ onNameChange }) {
         </div>
       ) : (
         <>
-          <span className="text-lg font-bold text-purple-400 whitespace-nowrap">
+          <span className="text-lg font-bold text-purple-600 dark:text-purple-300 whitespace-nowrap">
             Bienvenue, {name} 🍸
           </span>
           <button
             onClick={() => setEditing(true)}
-            className="text-white hover:text-yellow-300 transition"
+            className="hover:text-yellow-400 transition"
             aria-label="Modifier le nom"
           >
             <FiEdit />

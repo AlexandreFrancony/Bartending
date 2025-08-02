@@ -280,9 +280,9 @@
     "name": "Spritz",
     "image": "spritz.jpg",
     "ingredients": [
-      { "name": "Apérol", "quantity": "2 cl", "category": "Alcool" },
-      { "name": "Prosecco", "quantity": "3 cl", "category": "Alcool" },
-      { "name": "Eau pétillante", "quantity": "1 cl", "category": "Diluant" }
+      { "name": "Apérol", "quantity": "12 cl", "category": "Alcool" },
+      { "name": "Prosecco", "quantity": "24 cl", "category": "Alcool" },
+      { "name": "Eau pétillante", "quantity": "4 cl", "category": "Diluant" }
     ]
   },
   {
@@ -313,7 +313,7 @@
       { "name": "Italicus", "quantity": "3 cl", "category": "Alcool" },
       { "name": "Prosecco", "quantity": "6 cl", "category": "Alcool" },
       { "name": "Eau pétillante", "quantity": "1 cl", "category": "Diluant" },
-      { "name": "Jus de citron", "quantity": "1 rondelle", "category": "Garniture" }
+      { "name": "Jus de citron", "quantity": "1 rondelle", "category": "Fruits" }
     ]
   },
   {

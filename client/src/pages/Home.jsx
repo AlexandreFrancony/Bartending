@@ -85,7 +85,7 @@ export default function Home({ username, setUsername }) {
   return (
     <PageWrapper>
       {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-gray-900 text-white px-4 pt-[calc(env(safe-area-inset-top)+0.5rem)] pb-3 shadow-md w-full">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-white dark:bg-gray-900 text-gray-900 dark:text-white px-4 pt-[calc(env(safe-area-inset-top)+0.5rem)] pb-3 shadow-md w-full transition-colors duration-300">
         <UserDisplay onNameChange={setUsername} />
       </header>
 
