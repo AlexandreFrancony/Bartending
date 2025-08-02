@@ -1,5 +1,24 @@
 [
   {
+    "id": "mitsubachi",
+    "name": "ミツバチ (Mistsubachi)",
+    "image": "mitsubachi.jpg",
+    "ingredients": [
+      { "name": "Gin", "quantity": "5cl", "category": "Alcool" },
+      { "name": "Yuzu honey", "quantity": "3 cl", "category": "Sucrant" }
+    ]
+  },
+  {
+    "id": "Virgin Bee's Knees",
+    "name": "白い蜂 (Shiroi hachi)",
+    "image": "bees-knees.jpg",
+    "ingredients": [
+      { "name": "JNPR n°3", "quantity": "5cl", "category": "JNPR" },
+      { "name": "Jus de citron", "quantity": "2.5 cl", "category": "Fruits" },
+      { "name": "Sirop de Miel", "quantity": "2.5 cl", "category": "Sucrant" }
+    ]
+  },
+  {
     "id": "ceci-nest-pas-un-ginto",
     "name": "Ceci n'est pas un GinTo",
     "image": "ceci-nest-pas-un-ginto.jpg",
@@ -35,11 +54,6 @@
         "name": "Eau pétillante",
         "quantity": "6 cl",
         "category": "Diluant"
-      },
-      {
-        "name": "Rondelle d'orange",
-        "quantity": "1",
-        "category": "Garniture"
       }
     ]
   },
@@ -76,7 +90,7 @@
         "category": "JNPR"
       },
       {
-        "name": "Menthe fraîche",
+        "name": "Menthe",
         "quantity": "8 feuilles",
         "category": "Garniture"
       },
@@ -216,7 +230,7 @@
         "category": "Sucrant"
       },
       {
-        "name": "Basilic frais",
+        "name": "Basilic",
         "quantity": "6 feuilles",
         "category": "Garniture"
       }
@@ -250,21 +264,12 @@
     ]
   },
   {
-    "id": "bellini",
-    "name": "Bellini",
-    "image": "bellini.jpg",
-    "ingredients": [
-      { "name": "Purée de pêches", "quantity": "3 cl", "category": "Fruits" },
-      { "name": "Prosecco", "quantity": "10 cl", "category": "Alcool" }
-    ]
-  },
-  {
     "id": "sex-on-the-beach",
     "name": "Sex on the Beach",
     "image": "sex-on-the-beach.jpg",
     "ingredients": [
       { "name": "Vodka", "quantity": "4 cl", "category": "Alcool" },
-      { "name": "Crème de pêche", "quantity": "1 cl", "category": "Fruits" },
+      { "name": "Purée de pêches", "quantity": "1 cl", "category": "Fruits" },
       { "name": "Liqueur de Chambord", "quantity": "1 cl", "category": "Alcool" },
       { "name": "Jus d’orange", "quantity": "5 cl", "category": "Fruits" },
       { "name": "Jus de cranberry", "quantity": "5 cl", "category": "Fruits" }
@@ -281,11 +286,42 @@
     ]
   },
   {
+    "id": "bellini",
+    "name": "Bellini Spritz",
+    "image": "bellini.jpg",
+    "ingredients": [
+      { "name": "Purée de pêches", "quantity": "3 cl", "category": "Fruits" },
+      { "name": "Prosecco", "quantity": "10 cl", "category": "Alcool" }
+    ]
+  },
+  {
+    "id": "Hugo-spritz",
+    "name": "Hugo Spritz",
+    "image": "hugo-spritz.jpg",
+    "ingredients": [
+      { "name": "Prosecco", "quantity": "10 cl", "category": "Alcool" },
+      { "name": "Sirop de sureau", "quantity": "2 cl", "category": "Sucrant" },
+      { "name": "Eau pétillante", "quantity": "3 cl", "category": "Diluant" },
+      { "name": "Menthe", "quantity": "6 feuilles", "category": "Garniture" }
+    ]
+  },
+  {
+    "id": "Italicus-spritz",
+    "name": "Italicus Spritz",
+    "image": "italicus-spritz.jpg",
+    "ingredients": [
+      { "name": "Italicus", "quantity": "3 cl", "category": "Alcool" },
+      { "name": "Prosecco", "quantity": "6 cl", "category": "Alcool" },
+      { "name": "Eau pétillante", "quantity": "1 cl", "category": "Diluant" },
+      { "name": "Jus de citron", "quantity": "1 rondelle", "category": "Garniture" }
+    ]
+  },
+  {
     "id": "mojito",
     "name": "Mojito",
     "image": "mojito.jpg",
     "ingredients": [
-      { "name": "Feuilles de menthe", "quantity": "8 feuilles", "category": "Garniture" },
+      { "name": "Menthe", "quantity": "8 feuilles", "category": "Garniture" },
       { "name": "Rhum blanc", "quantity": "5 cl", "category": "Alcool" },
       { "name": "Sirop de sucre", "quantity": "2.5 cl", "category": "Sucrant" },
       { "name": "Jus de citron vert", "quantity": "2.5 cl", "category": "Fruits" },
@@ -334,9 +370,7 @@
       { "name": "Jus d’ananas", "quantity": "10 cl", "category": "Fruits" },
       { "name": "Jus de fruit de la passion", "quantity": "6 cl", "category": "Fruits" },
       { "name": "Jus de citron", "quantity": "1 cl", "category": "Fruits" },
-      { "name": "Sirop de grenadine", "quantity": "2 cl", "category": "Sucrant" },
-      { "name": "Tranche d’ananas", "quantity": "1", "category": "Garniture" },
-      { "name": "Tranche d’orange", "quantity": "1", "category": "Garniture" }
+      { "name": "Sirop de grenadine", "quantity": "2 cl", "category": "Sucrant" }
     ]
   },
   {
@@ -386,16 +420,7 @@
     "ingredients": [
       { "name": "Gin", "quantity": "5 cl", "category": "Alcool" },
       { "name": "Jus de citron", "quantity": "2.5 cl", "category": "Fruits" },
-      { "name": "Miel", "quantity": "2.5 cl", "category": "Sucrant" }
-    ]
-  },
-  {
-    "id": "mitsubachi",
-    "name": "ミツバチ (Mistsubachi)",
-    "image": "mitsubachi.jpg",
-    "ingredients": [
-      { "name": "Gin", "quantity": "5cl", "category": "Alcool" },
-      { "name": "Yuzu honey", "quantity": "3 cl", "category": "Fruits" }
+      { "name": "Sirop de Miel", "quantity": "2.5 cl", "category": "Sucrant" }
     ]
   },
   {
@@ -438,7 +463,7 @@
     "ingredients": [
       { "name": "Whisky", "quantity": "5 cl", "category": "Alcool" },
       { "name": "Jus de citron", "quantity": "2.5 cl", "category": "Fruits" },
-      { "name": "Miel", "quantity": "1.5 cl", "category": "Sucrant" }
+      { "name": "Sirop de Miel", "quantity": "1.5 cl", "category": "Sucrant" }
     ]
   }
 ]
