@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from "react-router-dom";
 import Home from "./pages/Home";
 import Admin from "./pages/Admin";
 import Orders from "./pages/Orders";
@@ -6,26 +6,18 @@ import NotAuthorized from "./pages/NotAuthorized";
 import PrivateRoute from "./components/PrivateRoute";
 import BottomNav from "./components/BottomNav";
 import { useEffect, useState } from "react";
+import Welcome from "./pages/Welcome";
 
-export default function App() {
-  const [username, setUsername] = useState("");
-  const [isBloster, setIsBloster] = useState(false);
+function AppRoutes({ username, setUsername, isBloster }) {
+  const location = useLocation();
 
-  useEffect(() => {
-    const stored = localStorage.getItem("username");
-    if (stored) {
-      setUsername(stored);
-      setIsBloster(stored.toLowerCase() === "bloster");
-    }
-  }, []);
-
-  useEffect(() => {
-    setIsBloster(username.toLowerCase() === "bloster");
-  }, [username]);
+  if (!username && location.pathname !== "/welcome") {
+    return <Navigate to="/welcome" replace />;
+  }
 
   return (
-    <Router>
-      <div className="pb-20">
+    <>
+      <div className={isBloster ? "pb-20" : ""}>
         <Routes>
           <Route
             path="/"
@@ -48,10 +40,41 @@ export default function App() {
             }
           />
           <Route path="/unauthorized" element={<NotAuthorized />} />
+          <Route
+            path="/welcome"
+            element={<Welcome setUsername={setUsername} />}
+          />
         </Routes>
       </div>
 
       <BottomNav username={username} isBloster={isBloster} />
+    </>
+  );
+}
+
+export default function App() {
+  const [username, setUsername] = useState("");
+  const [isBloster, setIsBloster] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const stored = localStorage.getItem("username");
+    if (stored) {
+      setUsername(stored);
+      setIsBloster(stored.toLowerCase() === "bloster");
+    }
+    setIsLoading(false);
+  }, []);
+
+  useEffect(() => {
+    setIsBloster(username.toLowerCase() === "bloster");
+  }, [username]);
+
+  if (isLoading) return null;
+
+  return (
+    <Router>
+      <AppRoutes username={username} setUsername={setUsername} isBloster={isBloster} />
     </Router>
   );
 }

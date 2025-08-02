@@ -1,8 +1,12 @@
 import { motion } from "framer-motion";
 
-export default function PageWrapper({ children }) {
+export default function PageWrapper({ children, isBloster }) {
   return (
-    <main className="min-h-screen transition-colors duration-300 bg-white dark:bg-gray-950 text-gray-900 dark:text-white">
+    <main
+      className={`min-h-screen transition-colors duration-300 bg-white dark:bg-gray-950 text-gray-900 dark:text-white ${
+        !isBloster ? "pb-4" : ""
+      }`}
+    >
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
