@@ -7,7 +7,7 @@ const cocktailImages = import.meta.glob("../assets/imagesCocktails/*.{jpg,png,we
   import: "default"
 });
 
-export default function CocktailCard({ cocktail, onSelect }) {
+export default function CocktailCard({ cocktail, onSelect, isFavorite, onToggleFavorite }) {
   const [imageSrc, setImageSrc] = useState(defaultCocktailImg);
 
   useEffect(() => {
@@ -20,7 +20,7 @@ export default function CocktailCard({ cocktail, onSelect }) {
 
   return (
     <div
-      className="bg-white rounded-2xl shadow p-4 cursor-pointer hover:shadow-lg transition w-full"
+      className="bg-white rounded-2xl shadow p-4 cursor-pointer hover:shadow-lg transition w-full relative"
       onClick={() => onSelect(cocktail)}
     >
       <img
@@ -28,9 +28,22 @@ export default function CocktailCard({ cocktail, onSelect }) {
         alt={cocktail.name}
         className="w-full h-40 object-cover rounded-xl"
       />
-      <h3 className="mt-2 text-lg font-semibold text-center text-gray-800">
+      <h3 className="mt-2 text-lg font-semibold text-gray-800 h-[3.5rem] flex items-center justify-center text-ellipsis overflow-hidden text-center text-wrap">
         {cocktail.name}
       </h3>
+
+      <button
+        onClick={(e) => {
+          e.stopPropagation();
+          onToggleFavorite();
+        }}
+        className={`absolute top-4 right-5 text-xl ${
+          isFavorite ? "text-red-500" : "text-gray-400"
+        }`}
+        aria-label={`Favori ${cocktail.name}`}
+      >
+        {isFavorite ? "❤️" : "🤍"}
+      </button>
     </div>
   );
 }
