@@ -1,12 +1,18 @@
 import express from "express";
 import cors from "cors";
-import cocktails from "../shared/cocktails.json" assert { type: "json" };
 import os from "os";
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const cocktails = JSON.parse(fs.readFileSync(path.join(__dirname, "../shared/cocktails.json"), "utf-8"));
+
 
 const app = express();
 const PORT = 3001;
 
-app.use(cors()); // ✅ autorise toutes les origines
+app.use(cors());
 app.use(express.json());
 
 // Données simulées
