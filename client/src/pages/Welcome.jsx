@@ -1,21 +1,23 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-export default function Welcome() {
+export default function Welcome({ setUsername }) {
   const [input, setInput] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
     const storedName = localStorage.getItem("username");
     if (storedName) {
+      setUsername(storedName); // assure la synchro immédiate
       navigate("/");
     }
-  }, [navigate]);
+  }, [navigate, setUsername]);
 
   const handleSubmit = () => {
     const trimmed = input.trim();
     if (trimmed) {
       localStorage.setItem("username", trimmed);
+      setUsername(trimmed);
       navigate("/");
     }
   };
