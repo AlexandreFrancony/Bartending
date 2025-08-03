@@ -17,7 +17,7 @@ function AppRoutes({ username, setUsername, isBloster }) {
 
   return (
     <>
-      <div className={isBloster ? "pb-20" : ""}>
+      <div className={isBloster ? "pb-16" : ""}>
         <Routes>
           <Route
             path="/"
